@@ -5,7 +5,9 @@ import {
   Route,
   Link
 } from "react-router-dom";
+
 import Home from './components/home';
+import About from './components/about';
 
 import './App.css';
 
@@ -21,9 +23,6 @@ class App extends Component {
             </li>
             <li>
               <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/dashboard">Dashboard</Link>
             </li>
           </ul>
   
@@ -43,9 +42,6 @@ class App extends Component {
             <Route path="/about">
               <About />
             </Route>
-            <Route path="/dashboard">
-              <Dashboard />
-            </Route>
           </Switch>
         </div>
       </Router>
@@ -54,22 +50,6 @@ class App extends Component {
 }
 
 
-
-function About() {
-  return (
-    <div>
-      <h2>About</h2>
-    </div>
-  );
-}
-
-function Dashboard() {
-  return (
-    <div>
-      <h2>Dashboard</h2>
-    </div>
-  );
-}
 
 
 export default App;
