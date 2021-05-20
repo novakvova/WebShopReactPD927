@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import * as types from './types';
 
 export class CounterPage extends Component {
+
+    buttonClick = () => {
+        console.log("----дякую----", "click btn");
+        this.props.dispatch({type: types.COUNTER_INCREMENT});
+        //this.setState()
+    }
 
     render() {
         console.log("-----props-----", this.props);
@@ -10,6 +17,7 @@ export class CounterPage extends Component {
             <div>
                 <h1>Counter</h1>
                 <p>Value redux: {counter}</p>
+                <button onClick={this.buttonClick}>Нажми мене</button>
             </div>
         )
     }

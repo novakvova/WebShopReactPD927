@@ -2,13 +2,14 @@ import React, { Component } from 'react'; //imrc
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 
 import Home from './components/home';
 import About from './components/about';
 import CounterPage from './components/counter';
+import Navbar from './components/navbar';
+import LoginPage from './components/auth/login';
 
 import './App.css';
 
@@ -18,17 +19,7 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/counter">Counter</Link>
-            </li>
-          </ul>
+          <Navbar />
   
           <hr />
   
@@ -39,17 +30,23 @@ class App extends Component {
             you have multiple routes, but you want only one
             of them to render at a time
           */}
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route path="/about">
-              <About />
-            </Route>
-            <Route path="/counter">
-              <CounterPage />
-            </Route>
-          </Switch>
+          <div className="container">
+            <Switch>
+              <Route exact path="/">
+                <Home />
+              </Route>
+              <Route path="/about">
+                <About />
+              </Route>
+              <Route path="/counter">
+                <CounterPage />
+              </Route>
+              <Route path="/login">
+                <LoginPage />
+              </Route>
+            </Switch>
+          </div>
+
         </div>
       </Router>
     );
