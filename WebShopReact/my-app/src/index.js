@@ -3,20 +3,23 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { Provider } from 'react-redux';
+import { ConnectedRouter } from 'connected-react-router';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import configureStore from './store/configureStore';
+import configureStore, {history} from './store/configureStore';
 
-
-const store = configureStore();
+const initialState = window.initialReduxState;
+const store = configureStore(history, initialState);
 
 ReactDOM.render(
   <Provider store={store}>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
+    <ConnectedRouter history={history}>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </ConnectedRouter>
   </Provider>,
   document.getElementById('root')
 );

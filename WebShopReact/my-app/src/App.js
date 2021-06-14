@@ -1,9 +1,10 @@
-import React, { Component } from 'react'; //imrc
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from "react-router-dom";
+import React, { Component, Suspense } from 'react'; //imrc
+// import {
+//   BrowserRouter as Router,
+//   Switch,
+//   Route
+// } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router";
 
 import Home from './components/home';
 import About from './components/about';
@@ -17,20 +18,10 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-      <Router>
-        <div>
-          <Navbar />
-  
-          <hr />
-  
-          {/*
-            A <Switch> looks through all its children <Route>
-            elements and renders the first one whose path
-            matches the current URL. Use a <Switch> any time
-            you have multiple routes, but you want only one
-            of them to render at a time
-          */}
-          <div className="container">
+      <>
+        <Navbar />
+        <div className="container">
+          <Suspense fallback={<div>Загрузка...</div>}>
             <Switch>
               <Route exact path="/">
                 <Home />
@@ -45,10 +36,10 @@ class App extends Component {
                 <LoginPage />
               </Route>
             </Switch>
-          </div>
-
+          </Suspense>
         </div>
-      </Router>
+      </>
+
     );
   }
 }
