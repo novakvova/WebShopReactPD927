@@ -2,6 +2,7 @@ import { applyMiddleware, combineReducers, createStore, compose } from 'redux';
 import { counterReducer } from '../components/counter/reducer';
 import { connectRouter, routerMiddleware } from 'connected-react-router'; 
 import { createBrowserHistory } from 'history';
+import { authReducer } from '../components/auth/login/reducer';
 
 
 // Create browser history to use in the Redux store
@@ -11,7 +12,8 @@ export const history = createBrowserHistory({ basename: baseUrl });
 export default function configureStore(history, initialState) {
 
     const reducers = {
-        counter: counterReducer
+        counter: counterReducer,
+        auth: authReducer
     };
 
     const rootReducer = combineReducers({

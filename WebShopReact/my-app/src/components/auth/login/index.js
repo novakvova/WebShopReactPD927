@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { login } from './actions';
+import { connect } from 'react-redux';
 
 export class LoginPage extends Component {
 
@@ -13,15 +15,17 @@ export class LoginPage extends Component {
 
     sendServerData = (e) => {
         e.preventDefault();
-        console.log("----send data server---", this.state.login);
+        // console.log("----send data server---", this.state.login);
+        this.props.login(this.state);
     }
 
     render() {
         const {login} = this.state;
+        console.log("----props----", this.props);
         console.log("---state---", this.state);
         return (
             <div>
-                <form>
+                <form onSubmit={this.sendServerData}>
                     <h1>Вхід на сайт</h1>
                     <div className="col-md-4">
                         <label htmlFor="login" className="form-label">First name</label>
@@ -33,12 +37,16 @@ export class LoginPage extends Component {
                      </div>
                     </div>
 
-                    <button className="btn btn-success"
-                        onClick={this.sendServerData}>Вхід</button>
+                    <button className="btn btn-success">Вхід</button>
                 </form>
             </div>
         )
     }
 }
 
-export default LoginPage
+const mapState = (state) => {
+    return {
+        loading: state.auth.loading
+    }
+}
+export default connect(mapState, {login})(LoginPage);
