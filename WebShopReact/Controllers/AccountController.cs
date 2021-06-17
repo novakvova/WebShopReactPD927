@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebShopReact.Helpers;
+using WebShopReact.Shared;
 
 namespace WebShopReact.Controllers
 {
@@ -60,7 +61,7 @@ namespace WebShopReact.Controllers
 
                     if (result.Succeeded)
                     {
-                        result = _userManager.AddToRoleAsync(user, "User").Result;
+                        result = _userManager.AddToRoleAsync(user, ProjectRoles.User).Result;
                         return new ResultDTO
                         {
                             Code = 200,

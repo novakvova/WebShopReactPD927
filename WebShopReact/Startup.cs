@@ -20,6 +20,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Text;
+using WebShopReact.Helpers;
 
 namespace WebShopReact
 {
@@ -174,6 +175,8 @@ namespace WebShopReact
                     spa.UseReactDevelopmentServer(npmScript: "start");
                 }
             });
+
+            //SeederDatabase.SeedData(app.ApplicationServices);
         }
     }
 }

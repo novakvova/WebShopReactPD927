@@ -62,4 +62,6 @@
     </ItemGroup>
   </Target>
 
+  <Import Project="..\WebShopReact.Shared\WebShopReact.Shared.projitems" Label="Shared" />
+
 </Project>
