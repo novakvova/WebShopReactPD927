@@ -9,7 +9,8 @@ export const login = (model) => {
             .then((response) => {
                 dispatch({type: types.LOGIN_SUCCESS});
             }, bad => {
-                dispatch({type: types.LOGIN_FAILED, errors: bad.responce.data})
+                console.log("!!!!!!!FAild login!!!!!!!!");
+                dispatch({type: types.LOGIN_FAILED, errors: bad.response.data})
             })
             .catch(err => {
                 console.log("Global server error");

@@ -14,6 +14,7 @@ export const authReducer = (state = initState, action) => {
             }
         }
         case types.LOGIN_SUCCESS: {
+            console.log('---sdfsdf---',action.errors);
             return {
                 ...state,
                 loading: false

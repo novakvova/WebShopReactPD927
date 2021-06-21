@@ -15,6 +15,8 @@ export class LoginPage extends Component {
 
     sendServerData = (e) => {
         e.preventDefault();
+        //Валідація даних на клієнті
+        //Зробити loading відправка на сервер
         // console.log("----send data server---", this.state.login);
         this.props.login(this.state);
     }

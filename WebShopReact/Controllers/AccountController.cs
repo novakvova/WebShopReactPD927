@@ -32,18 +32,18 @@ namespace WebShopReact.Controllers
             this._JWTTokenService = jWTTokenService;
         }
         [HttpPost("register")]
-        public async Task<ResultDTO> Register([FromBody] UserRegisterDTO model)
+        public async Task<IActionResult> Register([FromBody] UserRegisterDTO model)
         {
             try
             {
                 if (!ModelState.IsValid)
                 {
-                    return new ResultErrorDTO
+                    return BadRequest(new ResultErrorDTO
                     {
                         Code = 405,
                         Message = "Error",
                         Errors = CustomValidator.getErrorsByModelState(ModelState)
-                    };
+                    });
                 }
                 else
                 {
@@ -62,26 +62,26 @@ namespace WebShopReact.Controllers
                     if (result.Succeeded)
                     {
                         result = _userManager.AddToRoleAsync(user, ProjectRoles.User).Result;
-                        return new ResultDTO
+                        return Ok(new ResultDTO
                         {
                             Code = 200,
                             Message = "OK",
-                        };
+                        });
                     }
                     else
                     {
-                        return new ResultErrorDTO
+                        return BadRequest(new ResultErrorDTO
                         {
                             Code = 405,
                             Message = "Error",
                             Errors = CustomValidator.getErrorsByIdentityResult(result)
-                        };
+                        });
                     }
                 }
             }
             catch (Exception e)
             {
-                return new ResultErrorDTO
+                return BadRequest(new ResultErrorDTO
                 {
                     Code = 500,
                     Message = "Error",
@@ -89,7 +89,7 @@ namespace WebShopReact.Controllers
                     {
                         e.Message
                     }
-                };
+                });
             }
         }
 
